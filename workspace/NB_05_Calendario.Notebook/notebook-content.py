@@ -203,3 +203,17 @@ display(calendario_df)
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC CREATE TABLE medidas(
+# MAGIC     Medida STRING
+# MAGIC )
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
