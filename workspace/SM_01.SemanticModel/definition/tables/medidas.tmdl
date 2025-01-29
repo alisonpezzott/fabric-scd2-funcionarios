@@ -1,0 +1,108 @@
+table medidas
+	lineageTag: 3b54f26b-888b-4350-af59-8ad8651244d5
+	sourceLineageTag: [dbo].[medidas]
+
+	measure Admissoes = ```
+			
+			    CALCULATE(
+			        DISTINCTCOUNT(dim_funcionarios[Matricula]),
+			        USERELATIONSHIP(dim_calendario[Data], dim_funcionarios[DataAdmissao])
+			    )
+			```
+		formatString: #,0
+		lineageTag: 65add55c-4aaf-437d-b4c5-9e1388d45e1d
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+	measure Desligamentos = ```
+			
+			    CALCULATE(
+			        DISTINCTCOUNT(dim_funcionarios[Matricula]),
+			        USERELATIONSHIP(dim_calendario[Data], dim_funcionarios[DataDesligamento]),
+			        NOT ISBLANK(dim_funcionarios[DataDesligamento] )
+			    )
+			```
+		formatString: #,0
+		lineageTag: 529ec831-3ed5-4541-973b-b1f380dad653
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+	measure Ativos = ```
+			
+			
+			VAR __DataAtual = TODAY()
+			
+			RETURN
+			    IF( 
+			        MIN(dim_calendario[Data]) <= __DataAtual,
+			        CALCULATE(
+			            [Admissoes] - [Desligamentos],
+			            dim_calendario[Data] <= MAX(dim_calendario[Data])
+			        )
+			    ) 
+			```
+		formatString: #,0
+		lineageTag: 5d4c15cd-03a3-4f17-9926-fa0a41c11867
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+	measure Turnover = ```
+			
+			    AVERAGEX(
+			        VALUES(dim_calendario[MesAnoNome]),
+			        DIVIDE(
+			            AVERAGEX({[Admissoes], [Desligamentos]}, [Value]),
+			            [Ativos]
+			        )
+			    ) 
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 900c6dd9-0984-4ca5-80d9-f5722017e54c
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+	measure Absenteismo = ```
+			
+			VAR __Normais = SUM(fact_horas_trabalhadas[HorasNormais])
+			VAR __Trabalhadas = SUM(fact_horas_trabalhadas[HorasTrabalhadas])
+			VAR __Faltantes = __Normais - __Trabalhadas
+			RETURN
+			DIVIDE(__Faltantes, __Normais) 
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fe28a764-b0d7-4900-9c1b-182d87731d09
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+	column Medida
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: e42b9714-9c96-49ee-a7b9-6bbcd0003e00
+		sourceLineageTag: Medida
+		summarizeBy: none
+		sourceColumn: Medida
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition medidas = entity
+		mode: directLake
+		source
+			entityName: medidas
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

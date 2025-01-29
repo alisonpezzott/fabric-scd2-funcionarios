@@ -1,0 +1,22 @@
+relationship 4ae7eeeb-2151-d419-3896-5154f19149bd
+	relyOnReferentialIntegrity
+	fromColumn: fact_horas_trabalhadas.Data
+	toColumn: dim_calendario.Data
+
+relationship ab0c3a65-3dfd-7b6a-0aa9-59f716c893b7
+	isActive: false
+	relyOnReferentialIntegrity
+	fromColumn: dim_funcionarios.DataAdmissao
+	toColumn: dim_calendario.Data
+
+relationship 76189857-3d3b-4e52-0343-d79b2183ac9d
+	isActive: false
+	relyOnReferentialIntegrity
+	fromColumn: dim_funcionarios.DataDesligamento
+	toColumn: dim_calendario.Data
+
+relationship 6eddcdc3-1bec-a771-890a-e5d32772a93c
+	relyOnReferentialIntegrity
+	fromColumn: fact_horas_trabalhadas.MatriculaSk
+	toColumn: dim_funcionarios.MatriculaSk
+

@@ -1,0 +1,74 @@
+table fact_horas_trabalhadas
+	lineageTag: 47871d20-10f0-418c-9233-6aa511d538de
+	sourceLineageTag: [dbo].[tb_horas_trabalhadas]
+
+	column Matricula
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c3221f55-bb5e-4d2a-89e6-a52d941e23e7
+		sourceLineageTag: Matricula
+		summarizeBy: none
+		sourceColumn: Matricula
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	column Data
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 5cbe9fef-26f2-46b5-9f08-7984fd153e16
+		sourceLineageTag: Data
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column HorasNormais
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 570829ec-2e46-46ca-a5af-f3ce607f8251
+		sourceLineageTag: HorasNormais
+		summarizeBy: sum
+		sourceColumn: HorasNormais
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HorasTrabalhadas
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 73336bed-0a5c-4f05-b7c2-8abe6580fd71
+		sourceLineageTag: HorasTrabalhadas
+		summarizeBy: sum
+		sourceColumn: HorasTrabalhadas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MatriculaSk
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 320154ef-3ead-4ea1-ae67-300d06cbd58b
+		sourceLineageTag: MatriculaSk
+		summarizeBy: none
+		sourceColumn: MatriculaSk
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_horas_trabalhadas = entity
+		mode: directLake
+		source
+			entityName: tb_horas_trabalhadas
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

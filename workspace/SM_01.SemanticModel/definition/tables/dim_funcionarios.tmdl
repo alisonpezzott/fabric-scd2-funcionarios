@@ -1,0 +1,143 @@
+table dim_funcionarios
+	lineageTag: 2ec8361f-cf0c-4008-8943-91e1d1067a98
+	sourceLineageTag: [dbo].[tb_funcionarios]
+
+	column MatriculaSk
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d11de75e-ad64-4075-83f5-fa350ebfc478
+		sourceLineageTag: MatriculaSk
+		summarizeBy: none
+		sourceColumn: MatriculaSk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Matricula
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 64f8798d-6a55-4b5c-8743-2a1c7cc057d1
+		sourceLineageTag: Matricula
+		summarizeBy: none
+		sourceColumn: Matricula
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		sourceProviderType: varchar(800)
+		lineageTag: 6148dd80-c6b1-4478-afd2-374e270ea742
+		sourceLineageTag: Nome
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Filial
+		dataType: string
+		sourceProviderType: varchar(400)
+		lineageTag: 665c5db6-4127-49c3-8f60-834b0ca07361
+		sourceLineageTag: Filial
+		summarizeBy: none
+		sourceColumn: Filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departamento
+		dataType: string
+		sourceProviderType: varchar(600)
+		lineageTag: 6a9f8ef4-a66f-4a85-9850-215db5eb7c46
+		sourceLineageTag: Departamento
+		summarizeBy: none
+		sourceColumn: Departamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cargo
+		dataType: string
+		sourceProviderType: varchar(600)
+		lineageTag: accf5414-bdaf-4bef-8a48-70293e750603
+		sourceLineageTag: Cargo
+		summarizeBy: none
+		sourceColumn: Cargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataAdmissao
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: b983b13f-f082-4013-9cf1-e37f4359f91a
+		sourceLineageTag: DataAdmissao
+		summarizeBy: none
+		sourceColumn: DataAdmissao
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataDesligamento
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 54bb2a08-59ec-443e-858d-3b1e5db5c382
+		sourceLineageTag: DataDesligamento
+		summarizeBy: none
+		sourceColumn: DataDesligamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataLog
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 0a78c2e3-e9f2-4e69-9b3c-c662be318431
+		sourceLineageTag: DataLog
+		summarizeBy: none
+		sourceColumn: DataLog
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataVigenciaInicial
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: ff44eca5-ac65-4d5a-ae80-0cb44988d072
+		sourceLineageTag: DataVigenciaInicial
+		summarizeBy: none
+		sourceColumn: DataVigenciaInicial
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataVigenciaFinal
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 6f89dd67-380b-4a4c-a40f-b8c6e2b4f7b7
+		sourceLineageTag: DataVigenciaFinal
+		summarizeBy: none
+		sourceColumn: DataVigenciaFinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstaAtivo
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c4562a42-8d02-429a-aae1-f8b1566dc7d3
+		sourceLineageTag: EstaAtivo
+		summarizeBy: none
+		sourceColumn: EstaAtivo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_funcionarios = entity
+		mode: directLake
+		source
+			entityName: tb_funcionarios
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
