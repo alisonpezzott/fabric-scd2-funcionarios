@@ -2,7 +2,7 @@
 
 Este repositório tem o objetivo de auxiliar o processo de aprendizagem com o Microsoft Fabric sobre o assunto Slowly Changing Dimensions (SCD) especialmente do tipo 2.  
 
-Assita aqui ao vídeo de demonstratação: [Em breve](https://github.com/alisonpezzott/fabric-scd2-funcionarios)
+Assita aqui ao vídeo de demonstratação: [SCD type 2 Microsoft Fabric](https://youtu.be/vGP4Ud2kFZo)
 
 
 ## Agenda
