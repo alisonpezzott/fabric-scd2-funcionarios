@@ -141,7 +141,7 @@ calendario.Columns["Data"].IsKey = true;
 |'dim_calendario'\[Data]          | 'dim_funcionarios'\[DataAdmissao]        | 1:N           | N      |
 |'dim_calendario'\[Data]          | 'dim_funcionarios'\[DataDesligamento]    | 1:N           | N      |
 
-1.  Crie as medidas DAX:
+14.  Crie as medidas DAX:
 
 ### Medida \[Absenteismo]
 
