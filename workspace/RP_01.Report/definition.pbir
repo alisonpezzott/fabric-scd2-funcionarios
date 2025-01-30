@@ -1,9 +1,0 @@
-{
-  "version": "4.0",
-  "datasetReference": {
-    "byPath": {
-      "path": "../SM_01.SemanticModel"
-    },
-    "byConnection": null
-  }
-}
