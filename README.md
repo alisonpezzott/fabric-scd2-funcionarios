@@ -15,11 +15,11 @@ Este repositório tem o objetivo de auxiliar o processo de aprendizagem com o Mi
 
 ## Instruções  
 
-1. Efetue o download do arquivo zipado e extraia em seu computador;
+1. Efetue o download dos anexos no arquivo [facbric_scd2_anexos_v1.0.zip](https://github.com/alisonpezzott/fabric-scd2-funcionarios/releases/download/v1.0/facbric_scd2_anexos_v1.0.zip) e extraia em seu computador;
 2. Crie um workspace com Capacidade da malha ou Trial do Fabric;
 3. Adicione um Lakehouse e dê o nome de `LK_01`;
 4. Importe o arquivo fact_horas.csv para a pasta Files do Lakehouse;
-5. Na raiz do Workspace faça o upload dos notebooks clicando em `Importar`;
+5. Nos anexos baixados e extraidos acesse a pasta `notebooks`. Retorne ao Workspace no Fabric e faça o upload dos notebooks clicando em `Importar` e selecionando os notebooks mencionados;  
 1. Abra cada um dos notebooks importados, remova o lakehouse adicionado e adicione o Lakehouse `LK_01` recém-criado como Lakehouse default do Notebook; 
 2. Crie dois Data Pipelines;
    1. O primeiro chamado `PL_01_Full` você incluirá as atividades de **Notebooks full** e o **Calendario**, onde primeiro atualiza os Funcionarios e caso sucesso atualiza as HorasTrabalhadas e Calendario;
